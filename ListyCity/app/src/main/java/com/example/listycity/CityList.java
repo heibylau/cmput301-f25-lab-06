@@ -32,4 +32,22 @@ public class CityList {
         Collections.sort(list);
         return list;
     }
+
+    /**
+     * This checks if a city is in the cityList
+     * @param city
+     * This is a candidate city to check
+     * @return
+     * Return 1 if the cityList has the city, 0 otherwise
+     */
+    public int hasCity(City city) {
+        for (int i = 0; i < cities.size(); i++) {
+            if (city.getCityName().equals(cities.get(i).getCityName())) {
+                if (city.getProvinceName().equals(cities.get(i).getProvinceName())) {
+                    return 1;
+                }
+            }
+        }
+        return 0;
+    }
 }
