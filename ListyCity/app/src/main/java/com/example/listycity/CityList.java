@@ -3,6 +3,7 @@ package com.example.listycity;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * This is a class that keeps a list of city objects
@@ -34,20 +35,21 @@ public class CityList {
     }
 
     /**
-     * This checks if a city is in the cityList
+     * This checks if a city is in the cityList. If it is, remove that city. If not, throw NoSuchElementException
      * @param city
      * This is a candidate city to check
      * @return
-     * Return 1 if the cityList has the city, 0 otherwise
+     * Return number of cities in cityList if found
      */
     public int hasCity(City city) {
         for (int i = 0; i < cities.size(); i++) {
             if (city.getCityName().equals(cities.get(i).getCityName())) {
                 if (city.getProvinceName().equals(cities.get(i).getProvinceName())) {
-                    return 1;
+                    cities.remove(i); //Remove the city
+                    return cities.size();
                 }
             }
         }
-        return 0;
+        throw new NoSuchElementException("City not found in the list");
     }
 }

@@ -2,6 +2,9 @@ package com.example.listycity;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.NoSuchElementException;
+
 class CityListTest {
     private CityList mockCityList() {
         CityList cityList = new CityList();
@@ -51,7 +54,7 @@ class CityListTest {
         CityList cityList = mockCityList();
         City city = new City("Calgary", "Alberta");
         City city2 = mockCity();
-        assertEquals(0, cityList.hasCity(city));
-        assertEquals(1, cityList.hasCity(city2));
+        assertThrows(NoSuchElementException.class, () -> cityList.hasCity(city));
+        assertEquals(0, cityList.hasCity(city2));
     }
 }
